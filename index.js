@@ -59,7 +59,7 @@ function play() {
         order.push(colorChoice);
     }
     compTurn = true;
-    intervalID = ;
+    intervalID = setInterval(gameTurn, 800);
 }
 
 function clearColor(){
@@ -68,5 +68,25 @@ function clearColor(){
 
 function gameTurn() {
     on = false;
-    
+    if (flash === turn){
+        clearInterval(intervalID);
+        compTurn = false;
+        clearColor();
+        on = true;
+    }
+    if (compTurn) {
+        clearColor();
+        setTimeout(() => {
+            if(order[flash] == 1) one();
+
+        }, 200);
+    }
+}
+function one() {
+    if (noise){
+        let audio = $("#clip1");
+        audio.play();
+    }
+    noise = true;
+    topLeft.addClass("topLeft");    
 }

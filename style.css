@@ -75,7 +75,7 @@ body {
     box-shadow: 8px 8px 15px 5px #888888;
   }
   
-  #topleft {
+  .topleft {
     position: absolute;
     height: 250px;
     width: 250px;
@@ -92,13 +92,13 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
-  .topleft {
+  .topLeft {
     
     background: lightgreen;
     
   }
   
-  #topright {
+  .topright {
     position: absolute;
     height: 250px;
     width: 250px;
@@ -115,8 +115,13 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
+  .topRight {
+    
+    background: lightcoral;
+    
+  }
   
-  #bottomleft {
+  .bottomleft {
     position: absolute;
     height: 250px;
     width: 250px;
@@ -133,8 +138,12 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
-  
-  #bottomright {
+  .bottomLeft {
+    background-color: lightyellow;
+  }
+
+
+  .bottomright {
     position: absolute;
     height: 250px;
     width: 250px;
@@ -150,6 +159,9 @@ body {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+  }
+  .bottomRight {
+    background-color: lightblue;
   }
   
   #inner-circle {
