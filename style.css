@@ -117,7 +117,7 @@ body {
   }
   .topRight {
     
-    background: lightcoral;
+    background: tomato;
     
   }
   
@@ -139,7 +139,7 @@ body {
     -webkit-box-sizing: border-box;
   }
   .bottomLeft {
-    background-color: lightyellow;
+    background-color: yellow;
   }
 
 
@@ -161,7 +161,7 @@ body {
     -webkit-box-sizing: border-box;
   }
   .bottomRight {
-    background-color: lightblue;
+    background-color: lightskyblue;
   }
   
   #inner-circle {

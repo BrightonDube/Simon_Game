@@ -63,7 +63,10 @@ function play() {
 }
 
 function clearColor(){
-
+    topLeft.addClass("topleft");
+    topRight.addClass("topright");
+    bottomLeft.addClass("bottomleft");
+    bottomRight.addClass("bottomright");
 }
 
 function gameTurn() {
@@ -78,7 +81,9 @@ function gameTurn() {
         clearColor();
         setTimeout(() => {
             if(order[flash] == 1) one();
-
+            if(order[flash] == 2) two();
+            if(order[flash] == 3) three();
+            if(order[flash] == 4) four();
         }, 200);
     }
 }
@@ -89,4 +94,30 @@ function one() {
     }
     noise = true;
     topLeft.addClass("topLeft");    
+}
+
+function two() {
+    if (noise){
+        let audio = $("#clip2");
+        audio.play();
+    }
+    noise = true;
+    topLeft.addClass("topRight");    
+}
+
+function three() {
+    if (noise){
+        let audio = $("#clip3");
+        audio.play();
+    }
+    noise = true;
+    topLeft.addClass("bottomLeft");    
+}
+function four() {
+    if (noise){
+        let audio = $("#clip4");
+        audio.play();
+    }
+    noise = true;
+    topLeft.addClass("bottomRight");    
 }
