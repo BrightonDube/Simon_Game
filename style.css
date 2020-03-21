@@ -64,7 +64,7 @@ body {
   
   #outer-circle {
     background: #385a94;
-    border-radius: 50%;
+    border-radius: 22.5%;
     height: 500px;
     width: 500px;
     position: relative;
@@ -79,9 +79,10 @@ body {
     position: absolute;
     height: 250px;
     width: 250px;
-    border-radius: 250px 0 0 0;
-    -moz-border-radius: 250px 0 0 0;
-    -webkit-border-radius: 250px 0 0 0;
+    
+    border-radius: 40% 0 0 0;
+    -moz-border-radius: 40% 0 0 0;
+    -webkit-border-radius: 40% 0 0 0;
     background: darkgreen;
     top: 50%;
     left: 50%;
@@ -102,9 +103,9 @@ body {
     position: absolute;
     height: 250px;
     width: 250px;
-    border-radius: 0 250px 0 0;
-    -moz-border-radius: 0 250px 0 0;
-    -webkit-border-radius: 0 250px 0 0;
+    border-radius: 0 40% 0 0;
+    -moz-border-radius: 0 40% 0 0;
+    -webkit-border-radius: 0 40% 0 0;
     background: darkred;
     top: 50%;
     left: 50%;
@@ -125,9 +126,9 @@ body {
     position: absolute;
     height: 250px;
     width: 250px;
-    border-radius: 0 0 0 250px;
-    -moz-border-radius: 0 0 0 250px;
-    -webkit-border-radius: 0 0 0 250px;
+    border-radius: 0 0 0 40%;
+    -moz-border-radius: 0 0 0 40%;
+    -webkit-border-radius: 0 0 0 40%;
     background: goldenrod;
     top: 50%;
     left: 50%;
@@ -147,9 +148,9 @@ body {
     position: absolute;
     height: 250px;
     width: 250px;
-    border-radius: 0 0 250px 0;
-    -moz-border-radius: 0 0 250px 0;
-    -webkit-border-radius: 0 0 250px 0;
+    border-radius: 0 0 40% 0;
+    -moz-border-radius: 0 0 40% 0;
+    -webkit-border-radius: 0 0 40% 0;
     background: darkblue;
     top: 50%;
     left: 50%;

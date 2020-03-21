@@ -19,9 +19,18 @@ const onButton = $("#on");
 const strictButton = $("#strict");
 const startButton = $("#start");
 
+//this turns of the light of the clicked button;
+function clearColor(){
+    topLeft.removeClass("topLeft");
+    topRight.removeClass("topRight");
+    bottomLeft.removeClass("bottomLeft");
+    bottomRight.removeClass("bottomRight");
+}
+
 onButton.on("click", (event) => { 
     if ($(onButton).is(":checked")){
         on = true;
+        onButton.css("background-color", "blue")
         turnCounter.html("-");
     } else {
         on = false;
@@ -34,14 +43,13 @@ onButton.on("click", (event) => {
 strictButton.click(function(){
     if($(strictButton).is(":checked")){
         strict = true;
-        strictButton.css("backgroundColor", "blue");
+        strictButton.css("background-color", "blue");
     }else strict = false;
 });
 
 startButton.click(() => {
 if (on || win){
-    play();
-    console.log("on"); 
+    play();    
 }
 });
 function play() {
@@ -55,19 +63,14 @@ function play() {
     good = true;
     let colorChoice; 
     for(let i = 0; i < 20; i++){
-        colorChoice = Math.round(Math.random()* 3);
+        colorChoice = Math.round(Math.random()* 3 + 1);
         order.push(colorChoice);
     }
     compTurn = true;
     intervalID = setInterval(gameTurn, 800);
 }
 
-function clearColor(){
-    topLeft.addClass("topleft");
-    topRight.addClass("topright");
-    bottomLeft.addClass("bottomleft");
-    bottomRight.addClass("bottomright");
-}
+
 
 function gameTurn() {
     on = false;
@@ -84,13 +87,13 @@ function gameTurn() {
             if(order[flash] == 2) two();
             if(order[flash] == 3) three();
             if(order[flash] == 4) four();
+            flash++;
         }, 200);
     }
 }
 function one() {
     if (noise){
-        let audio = $("#clip1");
-        audio.play();
+        $("#clip1")[0].play();
     }
     noise = true;
     topLeft.addClass("topLeft");    
@@ -98,26 +101,23 @@ function one() {
 
 function two() {
     if (noise){
-        let audio = $("#clip2");
-        audio.play();
+        $("#clip2")[0].play();
     }
     noise = true;
-    topLeft.addClass("topRight");    
+    topRight.addClass("topRight");    
 }
 
 function three() {
     if (noise){
-        let audio = $("#clip3");
-        audio.play();
+        $("#clip3")[0].play();
     }
     noise = true;
-    topLeft.addClass("bottomLeft");    
+    bottomLeft.addClass("bottomLeft");    
 }
 function four() {
     if (noise){
-        let audio = $("#clip4");
-        audio.play();
+        $("#clip4")[0].play();
     }
     noise = true;
-    topLeft.addClass("bottomRight");    
+    bottomRight.addClass("bottomRight");    
 }
