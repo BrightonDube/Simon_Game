@@ -61,6 +61,7 @@ body {
     line-height: 30px;
   }
   
+  
   #outer-circle {
     background: #385a94;
     border-radius: 50%;
@@ -90,6 +91,11 @@ body {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+  }
+  .topleft {
+    
+    background: lightgreen;
+    
   }
   
   #topright {
