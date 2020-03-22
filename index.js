@@ -8,7 +8,7 @@ let intervalID;
 let strict = false;
 let noise  = true;
 let on = false;
-let win = false;
+let win;
 
 const turnCounter = $('#turn');
 const topLeft = $("#topleft");
@@ -35,8 +35,7 @@ function flashColor() {
 
 onButton.on("click", (event) => { 
     if (onButton.is(":checked")){
-        on = true;
-        onButton.css("background-color", "blue")
+        on = true;        
         turnCounter.html("-");
     } else {
         on = false;
@@ -46,14 +45,13 @@ onButton.on("click", (event) => {
         }
     });
 
-strictButton.click(function(){
-    if($(strictButton).is(":checked")){
-        strict = true;
-        strictButton.css("background-color", "blue");
+strictButton.click(function(e){
+    if(strictButton.is(":checked")){
+        strict = true;        
     }else strict = false;
 });
 
-startButton.click(() => {
+startButton.click((e) => {
 if (on || win){
     play();    
 }
@@ -69,7 +67,7 @@ function play() {
     good = true;
     let colorChoice; 
     for(let i = 0; i < 20; i++){
-        colorChoice = Math.round(Math.random()* 3 + 1);
+        colorChoice = Math.round(Math.random()* 3) + 1;
         order.push(colorChoice);
     }
     compTurn = true;
@@ -80,7 +78,8 @@ function play() {
 
 function gameTurn() {
     on = false;
-    if (flash === turn){
+    
+    if (flash == turn){
         clearInterval(intervalID);
         compTurn = false;
         clearColor();
@@ -128,7 +127,40 @@ function four() {
     bottomRight.addClass("bottomRight");    
 }
 
-topLeft.click(() => { 
+function check() {
+    let lastOrder = playerOrder.length - 1;
+
+    if (playerOrder[lastOrder] !== order[lastOrder]) good = false;
+    
+    if (lastOrder == 20 && good) winGame();
+
+    if (good == false){
+        flashColor();
+        turnCounter.html("NO!");
+        setTimeout(() => {
+            turnCounter.html(turn);
+            clearColor();
+
+            if (strict) play();
+            else {
+                good = true;
+                reset(); 
+            }
+        },800);
+
+        noise = false;
+    }
+
+    if (turn == lastOrder && good && !win) {
+        turn++;        
+        turnCounter.html(turn);
+        reset();
+    }
+    
+}
+
+
+topLeft.click((e) => { 
   if (on) {
       playerOrder.push(1);
       check();
@@ -142,7 +174,7 @@ topLeft.click(() => {
     
 });
 
-topRight.click(() => { 
+topRight.click((e) => { 
     if (on) {
         playerOrder.push(2);
         check();
@@ -156,7 +188,7 @@ topRight.click(() => {
       
   });
 
-bottomLeft.click(() => { 
+bottomLeft.click((e) => { 
     if (on) {
         playerOrder.push(3);
         check();
@@ -170,7 +202,7 @@ bottomLeft.click(() => {
       
 });
 
-bottomRight.click(() => { 
+bottomRight.click((e) => { 
     
     if (on) {
         playerOrder.push(4);
@@ -185,43 +217,12 @@ bottomRight.click(() => {
       
 });
 
-function check() {
-    let lastOrder = playerOrder.length - 1;
-
-    if (playerOrder[lastOrder] !== order[lastOrder]) good = false;
-    
-    if (lastOrder == 1 && good) winGame();
-
-    if (good == false){
-        flashColor();
-        turnCounter.html("NO!");
-        setTimeout(() => {
-            turnCounter.html(turn);
-            clearColor();
-
-            if (strict) play();
-            else {
-                reset();                
-                good = true;
-                intervalID = setInterval(gameTurn, 800);
-            }
-        },800);
-
-    noise = false;
-    }
-
-    if (turn == lastOrder && good && !win) {
-        turn++;
-        reset();
-        turnCounter.html(turn);
-    }
-    
-}
 
 function reset() {
     compTurn = true;
     flash = 0;
-    playerOrder = [];    
+    playerOrder = []; 
+    intervalID = setInterval(gameTurn, 800);   
 }
 
 function winGame() {
@@ -229,6 +230,11 @@ function winGame() {
     setTimeout(() => {
        clearColor(); 
     }, 500);
+    flashColor();
+    setTimeout(() => {
+        clearColor(); 
+     }, 500);
+     flashColor();
     turnCounter.html("WIN!");
     on = false;
     win = true;
